@@ -17,6 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+//////show all posts
+Route::get('/posts','PostController@index')->name('posts.index');
 
-Route::get('/posts','PostController@index');
-Route::get('/posts/{post}','PostController@show');
+///////////go to creation form
+Route::get('/posts/create','PostController@create')->name('posts.create');
+
+//////////submit creation form
+Route::post('/posts','PostController@store')->name('posts.store');
+
+/////////////view post details
+Route::get('/posts/{post}','PostController@show')->name('posts.show');
