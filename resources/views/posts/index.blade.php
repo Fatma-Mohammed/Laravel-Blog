@@ -11,7 +11,7 @@
             <th scope="col">Description</th>
             <th scope="col">Created At</th>
             <th scope="col">User</th>
-            <th scope="col">Action</th>
+            <th colspan="3">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -20,9 +20,14 @@
           <th scope="row">{{ $post->id }}</th>
             <td>{{ $post->title }}</td>
             <td>{{ $post->description }}</td>
-            <td>{{ $post->created_at  }}</td>
+            <td>{{ \Carbon\Carbon::parse($post->created_at)->format('l jS \of F Y h:i:s A')}}</td>
             <td>{{ $post->user ? $post->user->name : 'null' }}</td>
-            <td><a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-primary">view details</a></td>
+            <td><a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary">view</a>
+            <td><a href="" class="btn btn-secondary">Edit</a></td>
+            <td><a href="" class="btn btn-danger">Delete</a></td>
+
+          </td>
+
           </tr>
         @endforeach
         </tbody>
