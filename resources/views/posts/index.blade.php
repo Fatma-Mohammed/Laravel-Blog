@@ -10,6 +10,7 @@
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Created At</th>
+            <th scope="col">User</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -20,6 +21,7 @@
             <td>{{ $post->title }}</td>
             <td>{{ $post->description }}</td>
             <td>{{ $post->created_at  }}</td>
+            <td>{{ $post->user ? $post->user->name : 'null' }}</td>
             <td><a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-primary">view details</a></td>
           </tr>
         @endforeach
