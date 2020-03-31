@@ -73,9 +73,9 @@ class PostController extends Controller
 
         ]);
     }
-    public function update()
+    public function update(StorePostRequest $request)
     {
-        $request = request();
+        $validatedData = $request->validate();
         Post::where("id", $request->post)->update(
             [
                 'title' => $request->title,
