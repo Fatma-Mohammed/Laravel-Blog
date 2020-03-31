@@ -24,7 +24,12 @@ Route::get('/posts','PostController@index')->name('posts.index');
 Route::get('/posts/create','PostController@create')->name('posts.create');
 //////////submit creation form
 Route::post('/posts','PostController@store')->name('posts.store');
+////////edit post
+Route::get('/posts/{post}/edit','PostController@edit') -> name('posts.edit');
 
+
+///////update edited post
+Route::put('/posts/{post}','PostController@update') -> name('posts.update');
 
 ////////////delete post
 Route::delete('/posts/{post}', 'PostController@destroy') -> name('posts.destroy');

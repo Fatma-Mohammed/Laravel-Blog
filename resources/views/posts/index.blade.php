@@ -23,7 +23,7 @@
             <td>{{ \Carbon\Carbon::parse($post->created_at)->format('l jS \of F Y h:i:s A')}}</td>
             <td>{{ $post->user ? $post->user->name : 'null' }}</td>
             <td><a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary">view</a>
-            <td><a href="" class="btn btn-secondary">Edit</a></td>
+            <td><a href="{{route('posts.edit',['post'=>$post->id])}}" class="btn btn-secondary">Edit</a></td>
             <td><form method="POST"action="{{route('posts.destroy',['post' => $post->id])}}">
              @csrf @method('delete')
              <button type="submit"
