@@ -24,8 +24,14 @@
             <td>{{ $post->user ? $post->user->name : 'null' }}</td>
             <td><a href="{{route('posts.show',['post'=>$post->id])}}" class="btn btn-secondary">view</a>
             <td><a href="" class="btn btn-secondary">Edit</a></td>
-            <td><a href="" class="btn btn-danger">Delete</a></td>
-
+            <td><form method="POST"action="{{route('posts.destroy',['post' => $post->id])}}">
+             @csrf @method('delete')
+             <button type="submit"
+              class="btn btn-danger"
+               onclick="return confirm('Are you sure that you want to delete this post ?')">
+               Delete </button>
+            </form>
+        </td>
           </td>
 
           </tr>

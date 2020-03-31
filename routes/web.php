@@ -22,9 +22,12 @@ Route::get('/posts','PostController@index')->name('posts.index');
 
 ///////////go to creation form
 Route::get('/posts/create','PostController@create')->name('posts.create');
-
 //////////submit creation form
 Route::post('/posts','PostController@store')->name('posts.store');
+
+
+////////////delete post
+Route::delete('/posts/{post}', 'PostController@destroy') -> name('posts.destroy');
 
 /////////////view post details
 Route::get('/posts/{post}','PostController@show')->name('posts.show');
