@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-use App\Http\Requests\StorePostRequest;
 
 class PostController extends Controller
 {
@@ -39,9 +38,18 @@ class PostController extends Controller
         ]);
     }
 
-    public function store(StorePostRequest $request)
+    public function store()
     {
-        $validatedData = $request->validate();
+
+        $request = request();
+
+        $validatedData = $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required|min:10',
+        ],[
+            'title.min' => "title must be at least 3 charachters",
+            'description' => "description must be at at least 10 characters"
+        ]);
 
         Post::create([
             'title' => $request->title,
@@ -76,6 +84,13 @@ class PostController extends Controller
     public function update()
     {
         $request = request();
+        $validatedData = $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required|min:10',
+        ],[
+            'title.min' => "title must be at least 3 charachters",
+            'description' => "description must be at at least 10 characters"
+        ]);
         Post::where("id", $request->post)->update(
             [
                 'title' => $request->title,
