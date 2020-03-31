@@ -9,7 +9,7 @@
             <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Created At</th>
+            <th colspan="2">Created At</th>
             <th scope="col">User</th>
             <th colspan="3">Action</th>
           </tr>

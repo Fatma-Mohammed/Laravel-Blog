@@ -17,7 +17,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">User</label>
-    <select name="user_id" class="form-control" default="{{$post->user ? $post->user->name : 'null'}}">
+    <select name="user_id" class="form-control">
     @foreach($users as $user)
       <option value="{{$user->id}}">
       {{$user->name}}
