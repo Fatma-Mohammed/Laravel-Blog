@@ -14,9 +14,13 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Description</label>
+<<<<<<< HEAD
     <textarea class="form-control" name="description">
 {{$post->description}}
     </textarea>
+=======
+    <textarea class="form-control" name="description">{{$post->description}}</textarea>
+>>>>>>> auth
     @error('description')
     <div class="alert alert-danger">{{ $message }}</div>
 @enderror
