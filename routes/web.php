@@ -17,8 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['middleware'=>'auth'],function(){
+
 //////show all posts
-Route::get('/posts','PostController@index')->name('posts.index');
+Route::get('/posts','PostController@index')->name('posts.index')->middleware('auth');
 
 ///////////go to creation form
 Route::get('/posts/create','PostController@create')->name('posts.create');
@@ -26,7 +29,6 @@ Route::get('/posts/create','PostController@create')->name('posts.create');
 Route::post('/posts','PostController@store')->name('posts.store');
 ////////edit post
 Route::get('/posts/{post}/edit','PostController@edit') -> name('posts.edit');
-
 
 ///////update edited post
 Route::put('/posts/{post}','PostController@update') -> name('posts.update');
@@ -36,7 +38,9 @@ Route::delete('/posts/{post}', 'PostController@destroy') -> name('posts.destroy'
 
 /////////////view post details
 Route::get('/posts/{post}','PostController@show')->name('posts.show');
+});
+
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
