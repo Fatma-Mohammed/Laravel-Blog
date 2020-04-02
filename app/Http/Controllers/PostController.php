@@ -76,15 +76,12 @@ class PostController extends Controller
         ]);
     }
     public function update(UpdatePostRequest $request)
-    {         
+    {   
+             
         $validatedData = $request->validated();
-        $post = Post::find($request->post);
-        $post->slug = null;
-        $post->update([
-            'title' => $request->title, 
-        'description' => $request->description, 
-        'user_id' => $request->user_id
-        ]);     
+        $post = $request->only(["title","description","user_id"]); 
+        Post::find($request->post)->update($post);
+            
         return redirect()->route('posts.index');
     }
 
