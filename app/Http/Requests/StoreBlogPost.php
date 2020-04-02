@@ -26,6 +26,7 @@ class StoreBlogPost extends FormRequest
         return [
             'title' => 'required|min:3|unique:posts,title',
             'description' => 'required|min:10',
+            'user_id' => 'exists:users,id',
         ];
     }
     public function messages()

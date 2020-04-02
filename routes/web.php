@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::group(['middleware'=>'auth'],function(){
 
 //////show all posts
-Route::get('/posts','PostController@index')->name('posts.index')->middleware('auth');
+Route::get('/posts','PostController@index')->name('posts.index');
 
 ///////////go to creation form
 Route::get('/posts/create','PostController@create')->name('posts.create');

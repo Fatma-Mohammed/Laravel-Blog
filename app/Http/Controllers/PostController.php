@@ -82,10 +82,10 @@ class PostController extends Controller
             [
                 'title' => $request->title,
                 'description' => $request->description,
-                'user_id' => $request->user
+                'user_id' => $request->user_id
             ]
         );
-
+        
         return redirect()->route('posts.index');
     }
 
