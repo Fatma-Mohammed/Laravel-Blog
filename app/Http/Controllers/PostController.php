@@ -78,14 +78,13 @@ class PostController extends Controller
     public function update(UpdatePostRequest $request)
     {         
         $validatedData = $request->validated();
-        Post::where("id", $request->post)->update(
-            [
-                'title' => $request->title,
-                'description' => $request->description,
-                'user_id' => $request->user_id
-            ]
-        );
-        
+        $post = Post::find($request->post);
+        $post->slug = null;
+        $post->update([
+            'title' => $request->title, 
+        'description' => $request->description, 
+        'user_id' => $request->user_id
+        ]);     
         return redirect()->route('posts.index');
     }
 
